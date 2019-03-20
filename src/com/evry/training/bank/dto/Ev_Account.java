@@ -6,26 +6,39 @@ public class Ev_Account {
 	private String accountId;
 	private String customerId;
 	private String accountType;
-	private boolean accountStatus;
+	private int accountStatus;// Inactive-0, Active-1
 	private double ammount;
 	private Date creationDate;
 	private int pin;
+	
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	public int getAccountStatus() {
+		return accountStatus;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((accountId == null) ? 0 : accountId.hashCode());
-		result = prime * result + (accountStatus ? 1231 : 1237);
+		result = prime * result + accountStatus;
 		result = prime * result + ((accountType == null) ? 0 : accountType.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(ammount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
-		result = prime * result + pin;
 		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + pin;
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -54,12 +67,12 @@ public class Ev_Account {
 				return false;
 		} else if (!creationDate.equals(other.creationDate))
 			return false;
-		if (pin != other.pin)
-			return false;
 		if (customerId == null) {
 			if (other.customerId != null)
 				return false;
 		} else if (!customerId.equals(other.customerId))
+			return false;
+		if (pin != other.pin)
 			return false;
 		return true;
 	}
@@ -96,10 +109,10 @@ public class Ev_Account {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
-	public boolean isAccountStatus() {
+	public int isAccountStatus() {
 		return accountStatus;
 	}
-	public void setAccountStatus(boolean accountStatus) {
+	public void setAccountStatus(int accountStatus) {
 		this.accountStatus = accountStatus;
 	}
 	public double getAmmount() {

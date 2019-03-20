@@ -23,13 +23,13 @@ public class Ev_CustomerServiceImpl implements Ev_CustomerService{
 	@Override
 	public boolean deleteCustomer(String customerId) {
 		// TODO Auto-generated method stub
-		return false;
+		return customerDao.deleteCustomer(customerId);
 	}
 
 	@Override
 	public List<Ev_Customer> viewAllCustomers() {
 		// TODO Auto-generated method stub
-		return null;
+		return customerDao.viewAllCustomers();
 	}
 
 	@Override

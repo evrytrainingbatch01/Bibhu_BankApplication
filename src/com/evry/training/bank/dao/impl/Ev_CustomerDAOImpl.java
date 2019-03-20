@@ -2,10 +2,12 @@ package com.evry.training.bank.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import com.evry.training.bank.config.EvryBankQueryConst;
+import com.evry.training.bank.config.Ev_BankQueryConst;
 import com.evry.training.bank.dao.Ev_CustomerDAO;
 import com.evry.training.bank.dto.Ev_Account;
 import com.evry.training.bank.dto.Ev_Customer;
@@ -35,7 +37,7 @@ public class Ev_CustomerDAOImpl implements Ev_CustomerDAO {
 		Connection connection = ConnectionProvider.getConnection();
 		if (connection != null) {
 			try {
-				PreparedStatement preparedStatement = connection.prepareStatement(EvryBankQueryConst.INSERT_CUSTOMER);
+				PreparedStatement preparedStatement = connection.prepareStatement(Ev_BankQueryConst.INSERT_CUSTOMER);
 				preparedStatement.setString(1, customer.getCustomerId());
 				preparedStatement.setString(2, customer.getName());
 				preparedStatement.setString(3, customer.getUserName());
@@ -51,14 +53,44 @@ public class Ev_CustomerDAOImpl implements Ev_CustomerDAO {
 
 	@Override
 	public boolean deleteCustomer(String customerId) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		Connection connection = ConnectionProvider.getConnection();
+		if (connection != null) {
+			try {
+				PreparedStatement preparedStatement=connection.prepareStatement(Ev_BankQueryConst.DELETE_CUSTOMER);
+				preparedStatement.setString(1, customerId);
+				preparedStatement.execute();
+				result=true;
+			} catch (SQLException e) {
+				System.out.println(new DatabaseException("Not able to connect to database check configuration details"));
+			}
+			
+		}
+		return result;
 	}
 
 	@Override
 	public List<Ev_Customer> viewAllCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = ConnectionProvider.getConnection();
+		List<Ev_Customer> customers=null;
+		if (connection != null) {
+			try {
+				PreparedStatement preparedStatement=connection.prepareStatement(Ev_BankQueryConst.ALL_CUSTOMER);
+				ResultSet resultSet=preparedStatement.executeQuery();
+				customers=new ArrayList<>();
+				while(resultSet.next()){
+					Ev_Customer customer=new Ev_Customer();
+					customer.setCustomerId(resultSet.getString("customerId"));
+					customer.setName(resultSet.getString("name"));
+					customer.setUserName(resultSet.getString("username"));
+					customers.add(customer);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return customers;
 	}
 
 	@Override
@@ -67,7 +99,7 @@ public class Ev_CustomerDAOImpl implements Ev_CustomerDAO {
 		Connection connection = ConnectionProvider.getConnection();
 		if (connection != null) {
 			try {
-				PreparedStatement preparedStatement = connection.prepareStatement(EvryBankQueryConst.INSERT_CUSTOMER_DETAIL);
+				PreparedStatement preparedStatement = connection.prepareStatement(Ev_BankQueryConst.INSERT_CUSTOMER_DETAIL);
 				preparedStatement.setString(1, customerDetail.getCustomerId());
 				preparedStatement.setString(2, customerDetail.getEmailId());
 				preparedStatement.setDate(3, new java.sql.Date(customerDetail.getDob().getTime()));
