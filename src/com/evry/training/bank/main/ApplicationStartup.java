@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.evry.training.bank.config.Ev_BankConstants;
-import com.evry.training.bank.dto.Ev_Account;
-import com.evry.training.bank.dto.Ev_Customer;
-import com.evry.training.bank.dto.Ev_CustomerDetail;
-import com.evry.training.bank.dto.Ev_Loan;
+import com.evry.training.bank.domain.Ev_Account;
+import com.evry.training.bank.domain.Ev_Customer;
+import com.evry.training.bank.domain.Ev_CustomerDetail;
+import com.evry.training.bank.domain.Ev_Loan;
 import com.evry.training.bank.service.Ev_AccountService;
 import com.evry.training.bank.service.Ev_CustomerService;
 import com.evry.training.bank.service.Ev_LoanService;

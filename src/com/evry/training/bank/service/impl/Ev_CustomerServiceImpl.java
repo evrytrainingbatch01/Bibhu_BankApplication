@@ -2,12 +2,12 @@ package com.evry.training.bank.service.impl;
 
 import java.util.List;
 
-import com.evry.training.bank.dao.Ev_CustomerDAO;
-import com.evry.training.bank.dao.impl.Ev_CustomerDAOImpl;
-import com.evry.training.bank.dto.Ev_Account;
-import com.evry.training.bank.dto.Ev_Customer;
-import com.evry.training.bank.dto.Ev_CustomerDetail;
-import com.evry.training.bank.dto.Ev_Transaction;
+import com.evry.training.bank.domain.Ev_Account;
+import com.evry.training.bank.domain.Ev_Customer;
+import com.evry.training.bank.domain.Ev_CustomerDetail;
+import com.evry.training.bank.domain.Ev_Transaction;
+import com.evry.training.bank.infra.Ev_CustomerDAO;
+import com.evry.training.bank.infra.impl.Ev_CustomerDAOImpl;
 import com.evry.training.bank.service.Ev_CustomerService;
 
 public class Ev_CustomerServiceImpl implements Ev_CustomerService{

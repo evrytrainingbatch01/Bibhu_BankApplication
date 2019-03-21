@@ -1,6 +1,6 @@
 package com.evry.training.bank.service.impl;
 
-import com.evry.training.bank.dto.Ev_Transaction;
+import com.evry.training.bank.domain.Ev_Transaction;
 import com.evry.training.bank.service.Ev_TransactionService;
 
 public class Ev_TransactionServiceImpl implements Ev_TransactionService{

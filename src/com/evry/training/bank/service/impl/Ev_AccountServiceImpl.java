@@ -1,8 +1,8 @@
 package com.evry.training.bank.service.impl;
 
-import com.evry.training.bank.dao.Ev_AccountDAO;
-import com.evry.training.bank.dao.impl.Ev_AccountDAOImpl;
-import com.evry.training.bank.dto.Ev_Account;
+import com.evry.training.bank.domain.Ev_Account;
+import com.evry.training.bank.infra.Ev_AccountDAO;
+import com.evry.training.bank.infra.impl.Ev_AccountDAOImpl;
 import com.evry.training.bank.service.Ev_AccountService;
 
 public class Ev_AccountServiceImpl implements Ev_AccountService{
